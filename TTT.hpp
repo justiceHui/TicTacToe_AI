@@ -42,7 +42,7 @@ void TicTacToe::playerTurn(){
 	printf("enter number[1 ~ 9]: ");
 	do{
 		scanf("%d", &a);
-		if(map[a-1]!=0) printf("´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
+		if(map[a-1]!=0) printf("ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
 		else break;
 	}while(1);
 	map[a-1]=-1;
@@ -114,15 +114,15 @@ int TicTacToe::minimax(int board[9], int player){
 	
 	int score=-2;
 	int next=-1;
-	for(int i=0; i<9; i++){ //¸ğµç °æ¿ìÀÇ ¼ö 
-		if(board[i]==0){ //ºñ¾îÀÖÀ» °æ¿ì 
-			board[i]=player; //ÀÏ´Ü Âø¼ö
+	for(int i=0; i<9; i++){ //ëª¨ë“  ê²½ìš°ì˜ ìˆ˜ 
+		if(board[i]==0){ //ë¹„ì–´ìˆì„ ê²½ìš° 
+			board[i]=player; //ì¼ë‹¨ ì°©ìˆ˜
 			int now=-minimax(board, player*-1);
-			if(now > score){ //´õ À¯¸®ÇÏ¸é 
+			if(now > score){ //ë” ìœ ë¦¬í•˜ë©´ 
 				score=now;
 				next=i;
 			}
-			board[i]=0; //½Ã¹Ä·¹ÀÌ¼Ç Á¾·á 
+			board[i]=0; //ì‹œë®¬ë ˆì´ì…˜ ì¢…ë£Œ 
 		}
 	}
 	if(next==-1) return 0;
@@ -134,21 +134,26 @@ void TicTacToe::cpuTurn(){
 	for(int i=0; i<9; i++) board[i]=map[i];
 	int next=-1;
 	int score=-2;
-	for(int i=0; i<9; i++){ //¸ğµç °æ¿ìÀÇ ¼ö 
+	for(int i=0; i<9; i++){ //ëª¨ë“  ê²½ìš°ì˜ ìˆ˜ 
 		if(board[i]==0){
-			board[i]=1; //ÀÏ´Ü Âø¼ö 
-			int tmp=-TicTacToe::minimax(board, -1); //Á¡¼ö ±¸ÇÏ±â 
-			board[i]=0; //½Ã¹Ä·¹ÀÌ¼Ç Á¾·á
+			board[i]=1; //ì¼ë‹¨ ì°©ìˆ˜ 
+			int tmp=-TicTacToe::minimax(board, -1); //ì ìˆ˜ êµ¬í•˜ê¸° 
+			board[i]=0; //ì‹œë®¬ë ˆì´ì…˜ ì¢…ë£Œ
 			if(tmp > score){
 				score=tmp;
 				next=i;
 			} 
 		}
 	}
-	if(danger()!=-1){
+	
+	int suCnt=0;
+	for(int i=0; i<9; i++) if(map[i]!=0) suCnt++;
+	if(suCnt==1 && map[4]==0) next=4; //ê°€ìš´ë° ìë¦¬ 
+	
+	if(danger()!=-1){ //íŒ¨ë°° ì¡°ê±´ 
 		next=danger();
 	}
-	if(good()!=-1){
+	if(good()!=-1){ //ìŠ¹ë¦¬ ì¡°ê±´ 
 		next=good();
 	}
 	map[next]=1;
