@@ -9,11 +9,11 @@ int main(){
 		//ttt.printMap();
 		//printf("%d", ttt.isWin());
 		int first; //0 player 1 cpu
-		printf("´©°¡ ¸ÕÀú ½ÃÀÛÇÒ±î¿ä? (0: ÇÃ·¹ÀÌ¾î, 1: ÄÄÇ»ÅÍ)");
+		printf("ëˆ„ê°€ ë¨¼ì € ì‹œì‘í• ê¹Œìš”? (0: í”Œë ˆì´ì–´, 1: ì»´í“¨í„°)");
 		do{
 			scanf("%d", &first);
 			if(first != 0 && first != 1){
-				printf("\n´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+				printf("\në‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			}
 			else break;
 		}while(1);
@@ -26,15 +26,15 @@ int main(){
 			}
 		}
 		switch(ttt.isWin()){
-			case 0: printf("¹«½ÂºÎ\n\n"); break;
-			case 1: printf("ÄÄÇ»ÅÍ ½Â\n\n"); break;
-			case -1: printf("ÇÃ·¹ÀÌ¾î ½Â\n\n"); break;
+			case 0: printf("ë¬´ìŠ¹ë¶€\n\n"); break;
+			case 1: printf("ì»´í“¨í„° ìŠ¹\n\n"); break;
+			case -1: printf("í”Œë ˆì´ì–´ ìŠ¹\n\n"); break;
 		}
 		char flag;
-		printf("´Ù½Ã ÇÏ½Ã°Ú½À´Ï±î? (y, n)");
+		printf("ë‹¤ì‹œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ? (y, n)");
 		do{
 			scanf("%c", &flag);
-			if(flag!='y' && flag!='Y' && flag!='n' && flag!='N') printf("\n´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			if(flag!='y' && flag!='Y' && flag!='n' && flag!='N') printf("\në‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			else break;
 		}while(1);
 		if(flag=='N' || flag=='n') break;
